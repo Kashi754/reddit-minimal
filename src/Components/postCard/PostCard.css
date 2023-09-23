@@ -1,0 +1,70 @@
+.post-card {
+    width: 75vw;
+    display: grid;
+    grid-template:  'score header' 2.5rem
+                    'score body'   auto
+                    'score footer' auto / 4rem 1fr;
+    box-sizing: border-box;
+    background-color: #313131;
+    border: 1px solid #666;
+    border-radius: 15px;
+    color: white;
+    align-content: center;
+}
+
+.card-score {
+    grid-area: score;
+    justify-self: center;
+    align-self: center;
+    background-color: #282828;
+    height: 100%;
+    width: 100%;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    color: rgb(145, 145, 145);
+    padding: 1rem 0;
+    box-sizing: border-box;
+}
+
+.arrow {
+    width: 2.5rem;
+}
+
+.card-header {
+    grid-area: header;
+    font-size: 0.75rem;
+    display: grid;
+    grid-template-columns: 1fr fit-content;
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+}
+
+.card-header .main {
+    grid-column: 1;
+    justify-self: start;
+}
+
+.card-header a {
+    color: white;
+    text-decoration: underline;
+}
+
+.card-header a:hover {
+    text-decoration: none;
+    color: grey;
+}
+
+.card-header .time {
+    grid-column: 2;
+    justify-self: end;
+}
+
+.card-footer {
+    grid-area: footer;
+    padding: 0.5rem 0.75rem;
+}
