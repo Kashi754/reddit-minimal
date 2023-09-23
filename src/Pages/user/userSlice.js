@@ -5,7 +5,6 @@ export const loadUserFeed = createAsyncThunk(
     async(user, before, after) => {
         const response = await fetch(`http://www.reddit.com/user/${user}/.json?sort=hot&before=${before}&after=${after}`);
         const data = await response.json();
-        console.log(data);
         return data;
     }
 )

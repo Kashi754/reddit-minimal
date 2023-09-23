@@ -47,7 +47,7 @@ export function CardBody({ post }) {
 
     return(
         <div className={`card-body ${!post.selftext && thumbnail && 'thumbnail'}`}>
-            <Link to={`subreddits/${post.subreddit}/${post.id}`}>
+            <Link to={`/subreddits/${post.subreddit}/${post.id}`}>
                 <div className="gradient-shadow" />
             </Link>
             <h2>{post.title}</h2>

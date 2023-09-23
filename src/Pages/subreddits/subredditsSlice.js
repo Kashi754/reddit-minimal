@@ -40,7 +40,7 @@ const subredditsSlice = createSlice({
     }
 });
 
-export const selectNextPage = (state) => state.home.nextPage;
-export const selectPrevPage = (state) => state.home.prevPage;
+export const selectNextPage = (state) => state.subreddits.nextPage;
+export const selectPrevPage = (state) => state.subreddits.prevPage;
 export const selectSubredditsFeed = (state) => state.subreddits.subredditsFeed;
 export default subredditsSlice.reducer;

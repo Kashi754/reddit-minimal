@@ -40,7 +40,7 @@ const usersSlice = createSlice({
     }
 });
 
-export const selectNextPage = (state) => state.home.nextPage;
-export const selectPrevPage = (state) => state.home.prevPage;
+export const selectNextPage = (state) => state.users.nextPage;
+export const selectPrevPage = (state) => state.users.prevPage;
 export const selectUsersFeed = (state) => state.users.usersFeed;
 export default usersSlice.reducer;

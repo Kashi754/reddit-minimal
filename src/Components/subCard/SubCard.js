@@ -4,7 +4,6 @@ import './SubCard.css';
 
 export function SubCard({ subreddit }) {
     const imageUrl = subreddit.community_icon?.split('?')[0];
-    console.log(subreddit);
 
     return (
         <div className='sub-card'>

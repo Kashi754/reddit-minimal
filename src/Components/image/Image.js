@@ -5,8 +5,6 @@ export function Image({ post }) {
         let urlTarget = url.split('/');
         urlTarget = urlTarget.map(element => element !== 'preview.redd.it'? element : 'i.redd.it');
         url = urlTarget.join('/')
-        console.log(url);
-        console.log(urlTarget);
         return <img className='preview' src={url} alt={post.title} />
     }
 
