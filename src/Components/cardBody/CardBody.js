@@ -55,7 +55,7 @@ export function CardBody({ post }) {
                 <div className={`container ${thumbnail && 'thumbnail-container'}`}>
                     { post.is_video? <Video post={post} /> : <Image post={post} /> }
                 </div>
-                <div dangerouslySetInnerHTML={{__html: decodeHtml(post.selftext_html)}} />
+                <div dangerouslySetInnerHTML={{__html: decodeHtml(post.selftext_html || post.body_html || '')}} />
             </div>
         </div>
     );

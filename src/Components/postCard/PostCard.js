@@ -50,11 +50,11 @@ export function PostCard({ post }) {
             </div>
             <div className='card-header'>
                 <h3 className='main'>
-                    <Link to={`subreddits/${post.subreddit}`}>
+                    <Link to={`/subreddits/${post.subreddit}`}>
                         {`${post.subreddit_name_prefixed}`}
                     </Link>
                     &nbsp;•&nbsp;
-                    <Link to={`users/${post.author}`}>
+                    <Link to={`/users/${post.author}`}>
                         Posted by u/{post.author}
                     </Link>
                 </h3>
