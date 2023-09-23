@@ -1,9 +1,9 @@
 .sub-card {
     width: 75vw;
     display: grid;
-    grid-template:  'header' 2.5rem
-                    'body'   auto
-                    'footer' auto;
+    grid-template:  'icon header' 2.5rem
+                    'icon body'   auto
+                    'icon footer' auto / auto 1fr;
     box-sizing: border-box;
     background-color: #313131;
     border: 1px solid #666;

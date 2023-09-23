@@ -3,7 +3,6 @@ import { CardBody } from '../cardBody/CardBody';
 import './UserCard.css';
 
 export function UserCard({ user }) {
-    console.log(user);
     const imageUrl = user.icon_img?.split('?')[0];
 
     return (
@@ -11,7 +10,7 @@ export function UserCard({ user }) {
             <div className="img-container">
                 <img className='user-icon' src={imageUrl} />
             </div>
-            <div className='card-header'>
+            <div className='user-card-header card-header'>
                 <h3 className='main'>
                     <Link to={`${user.display_name_prefixed.split('/')[1]}`}>
                         {user.display_name_prefixed}

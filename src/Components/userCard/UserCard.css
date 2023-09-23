@@ -25,7 +25,7 @@
     box-sizing: border-box;
 }
 
-.card-header {
+.user-card-header {
     grid-area: header;
     font-size: 0.75rem;
     display: grid;
