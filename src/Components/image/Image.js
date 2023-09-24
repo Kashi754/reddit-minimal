@@ -16,6 +16,10 @@ export function Image({ post }) {
     }
 
     if(/* post.thumbnail === 'default' &&  */post.preview) {
-        return <img className='preview' src={post.preview.images[0].source.url} alt='I am a preview' />
+        const image = post.preview.images[0];
+        if(image && image.source.url.split('/')[2].split('.')[0] === 'external-preview') {
+            return;
+        }
+        return <img className='preview' src={image.source.url} alt={image.source.url} />
     }
 }

@@ -2,6 +2,9 @@ import { Link } from 'react-router-dom';
 import { Image } from '../image/Image';
 import { Video } from '../video/Video';
 import { useEffect } from 'react';
+import { addSpaceAfterHash } from '../../utilities/addSpaceAfterHash';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import './CardBody.css';
 
 function decodeHtml(html) {
@@ -18,6 +21,14 @@ function isThumbnail(post) {
 
 export function CardBody({ post }) {
 
+    function setText(text) {
+        if(text) {
+            const newText = addSpaceAfterHash(text);
+            return <ReactMarkdown children={newText} remarkPlugins={[remarkGfm]} />
+        }
+        return;
+    }
+
     useEffect(() => {
         const containers = document.getElementsByClassName('container');
         for(let container of containers) {
@@ -31,14 +42,14 @@ export function CardBody({ post }) {
         if(post.public_description) {
             return (
                 <div className='card-body'>
-                    <p dangerouslySetInnerHTML={{__html: decodeHtml(post.public_description)}} />
+                    {setText(post.public_description)}
                 </div>
             )
         } else {
             const description = post.description.split('\n');
             return (
                 <div className='card-body'>
-                    <p dangerouslySetInnerHTML={{__html: decodeHtml(description[0])}} />
+                    {setText(description[0])}
                 </div>
             )
         }

@@ -1,15 +1,15 @@
 .post-body {
-    position: relative;
     grid-area: body;
     padding: 0 0.75rem;
     padding: 0.5rem 0;
     display: flex;
     flex-direction: column;
+    line-height: 1.5;
 }
 
 .post-body p {
     line-height: 1.5rem;
-    padding: 0 2rem;
+    padding: 0.5rem 2rem;
 }
 
 .post-body a {
@@ -17,16 +17,45 @@
     text-decoration: underline;
 }
 
+.post-body h1 {
+    padding: 0 2rem;
+    padding-bottom: 1rem;
+    font-size: 2rem;
+    text-align: center;
+}
+
 .post-body h2 {
     padding: 0 2rem;
-    padding-bottom: 3rem;
+    padding-bottom: 1rem;
     font-size: 1.5rem;
+    text-align: center;
+}
+
+.post-body h3 {
+    padding: 0 2rem;
+    padding-bottom: 1rem;
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+.post-body ul {
+    padding-left: 5rem;
+}
+
+.post-body pre {
+    padding: 0.5rem 2rem;
+}
+
+.post-body code {
+    background-color: rgba(0, 0, 0, 0.25);
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #666;
 }
 
 .content {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
 }
 
 .container {

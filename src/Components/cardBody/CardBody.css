@@ -17,7 +17,7 @@
 
 .card-body p {
     line-height: 1.5rem;
-    padding: 0 2rem;
+    padding: 0.5rem 2rem;
 }
 
 .card-body a {
@@ -25,10 +25,40 @@
     text-decoration: underline;
 }
 
+.card-body h1 {
+    padding: 0 2rem;
+    padding-bottom: 1rem;
+    font-size: 2rem;
+    text-align: center;
+}
+
 .card-body h2 {
     padding: 0 2rem;
-    padding-bottom: 1.5rem;
+    padding-bottom: 1rem;
     font-size: 1.5rem;
+    text-align: center;
+}
+
+.card-body h3 {
+    padding: 0 2rem;
+    padding-bottom: 1rem;
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+.card-body ul {
+    padding-left: 5rem;
+}
+
+.card-body pre {
+    padding: 0.5rem 2rem;
+}
+
+.card-body code {
+    background-color: rgba(0, 0, 0, 0.25);
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #666;
 }
 
 .content {

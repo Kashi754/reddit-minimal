@@ -1,0 +1,17 @@
+.comments {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+    background-color: rgb(36, 36, 36);
+    width: 75vw;
+    padding: 1rem;
+    box-sizing: border-box;
+    border-radius: 15px;
+    border: 1px solid #666;
+}
+
+.comments h2 {
+    color: white;
+    font-size: 2rem;
+}

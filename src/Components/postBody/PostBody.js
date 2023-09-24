@@ -1,18 +1,19 @@
 import { Gallery } from '../gallery/Gallery';
 import './PostBody.css';
-
-function decodeHtml(html) {
-    let textArea = document.createElement('textarea');
-    textArea.innerHTML = html;
-    return textArea.value;
-}
+import remarkGfm from 'remark-gfm';
+import ReactMarkdown from 'react-markdown';
+import { addSpaceAfterHash } from '../../utilities/addSpaceAfterHash';
 
 export function PostBody({ post }) {
 
     function setImage(post) {
         const image = post.preview?.images?.[0];
+        if(image && image.source.url.split('/')[2].split('.')[0] === 'external-preview') {
+            return;
+        }
+        
         if(image && !post.is_gallery) {
-            const imageUrl = image.source.url.split('?')[0].replace('preview', 'i');
+            const imageUrl = image.source.url.split('?')[0].replace('/preview', '/i');
             return (
                 <div className="container">
                     <img src={imageUrl} alt={imageUrl}/>
@@ -33,9 +34,10 @@ export function PostBody({ post }) {
     }
     
     function setText(post) {
-        const text = post.selftext_html || post.body_html;
+        const text = post.selftext || post.body;
         if(text) {
-            return <div dangerouslySetInnerHTML={{__html: decodeHtml(post.selftext_html || post.body_html)}} />
+            const newText = addSpaceAfterHash(text);
+            return <ReactMarkdown children={newText} remarkPlugins={[remarkGfm]} />
         }
     }
     
