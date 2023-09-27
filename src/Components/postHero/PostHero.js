@@ -63,7 +63,7 @@ export function PostHero({ post }) {
                     </span>
                 </h3>
             </div>
-            <PostBody post={post} />
+            <PostBody post={post} isListingCard={false}/>
             <div className='card-footer'>
                 <h4>{post.num_comments} comments</h4>
             </div>

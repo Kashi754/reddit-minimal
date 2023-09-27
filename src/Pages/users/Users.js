@@ -11,7 +11,6 @@ export function Users() {
     useEffect(() => {
         dispatch(loadUsersFeed(null, null));
     }, [dispatch])
-
     return (
         <UserListing feed={feed} />
     );

@@ -9,7 +9,9 @@ export function Listing({ feed }) {
     return (
         <div className="listing">{
             feed.map((post, index) => {
-                return <PostCard key={index} post={post} />
+                if(!post.body) {
+                    return <PostCard key={index} post={post} />
+                }
             })
         }</div>
     );

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { CardBody } from '../cardBody/CardBody';
 import './SubCard.css';
+import { PostBody } from '../postBody/PostBody';
 
 export function SubCard({ subreddit }) {
     const imageUrl = subreddit.community_icon?.split('?')[0];
@@ -17,7 +17,7 @@ export function SubCard({ subreddit }) {
                     </Link>
                 </h3>
             </div>
-            <CardBody post={subreddit} />
+            <PostBody post={subreddit} />
             <div className='card-footer'>
                 <h4>{subreddit.subscribers} subscribers</h4>
             </div>

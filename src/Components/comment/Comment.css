@@ -18,7 +18,7 @@
     font-size: 0.75rem;
     padding: 0.5rem 0.75rem;
     font-size: 1rem;
-    background-color: rgba(0, 0, 0, 0.25);
+    background-color: rgba(0, 0, 0, 0.25);      
 }
 
 .comment a {
@@ -44,12 +44,75 @@
 }
 
 .body p {
-    line-height: 1.5;
+    line-height: 1.5rem;
+    padding: 0.5rem 2rem;
 }
 
 .body a {
-    color: grey;
+    color: white;
+    text-decoration: underline;
 }
+
+.body h1 {
+    padding: 0 2rem;
+    padding-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.body h2 {
+    padding: 0 2rem;
+    padding-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.body h3 {
+    padding: 0 2rem;
+    padding-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.body :is(ul, ol) {
+    padding-left: 5rem;
+}
+
+.body li {
+    line-height: 1.5;;
+}
+
+.body pre {
+    padding: 0.5rem 2rem;
+}
+
+.body code {
+    background-color: rgba(0, 0, 0, 0.25);
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #666;
+}
+
+.body table {
+    margin: 0 auto;
+    justify-self: center;
+}
+
+.body table {
+    border: 2px solid #666;
+    border-collapse: collapse;
+}
+
+.body :is(th, td) {
+    border: 1px solid #666;
+    padding: 0.5rem;
+}
+.body th {
+    background-color: #282828;
+}
+
+.body td {
+    background-color: #202020;
+}
+
+
 
 .replies {
     grid-area: replies;

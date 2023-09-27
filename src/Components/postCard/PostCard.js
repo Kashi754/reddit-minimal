@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { CardBody } from '../cardBody/CardBody';
+import { PostBody } from '../postBody/PostBody';
 import './PostCard.css';
 
 function displayTime(post) {
@@ -64,7 +64,7 @@ export function PostCard({ post }) {
                     </span>
                 </h3>
             </div>
-            <CardBody post={post} />
+            <PostBody post={post} isListingCard={true} />
             <div className='card-footer'>
                 <h4>{post.num_comments} comments</h4>
             </div>

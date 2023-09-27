@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { CardBody } from '../cardBody/CardBody';
 import './UserCard.css';
+import { PostBody } from '../postBody/PostBody';
 
 export function UserCard({ user }) {
     const imageUrl = user.icon_img?.split('?')[0];
@@ -17,7 +17,7 @@ export function UserCard({ user }) {
                     </Link>
                 </h3>
             </div>
-            <CardBody className='body' post={user} />
+            <PostBody className='body' post={user} />
         </div>
     )
 }

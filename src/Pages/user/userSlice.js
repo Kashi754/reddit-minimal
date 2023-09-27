@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const loadUserFeed = createAsyncThunk(
     'user/loadUserFeed',
     async(user, before, after) => {
-        const response = await fetch(`http://www.reddit.com/user/${user}/.json?sort=hot&before=${before}&after=${after}`);
+        const response = await fetch(`http://www.reddit.com/user/${user}/submitted/.json?sort=hot&before=${before}&after=${after}`);
         const data = await response.json();
         return data;
     }

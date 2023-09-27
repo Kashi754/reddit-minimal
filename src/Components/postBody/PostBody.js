@@ -1,61 +1,33 @@
-import { Gallery } from '../gallery/Gallery';
+import { GalleryWrapper } from '../postComponents/GalleryWrapper';
+import { Image } from '../postComponents/Image';
+import { Video } from '../postComponents/Video';
+import { Text } from '../postComponents/Text';
+import { PreviewGradient } from '../postComponents/PreviewGradient';
+import { ExternalLink } from '../postComponents/ExternalLink';
+import { useNavigate } from 'react-router-dom';
 import './PostBody.css';
-import remarkGfm from 'remark-gfm';
-import ReactMarkdown from 'react-markdown';
-import { addSpaceAfterHash } from '../../utilities/addSpaceAfterHash';
 
-export function PostBody({ post }) {
 
-    function setImage(post) {
-        const image = post.preview?.images?.[0];
-        if(image && image.source.url.split('/')[2].split('.')[0] === 'external-preview') {
-            return;
-        }
-        
-        if(image && !post.is_gallery) {
-            const imageUrl = image.source.url.split('?')[0].replace('/preview', '/i');
-            return (
-                <div className="container">
-                    <img src={imageUrl} alt={imageUrl}/>
-                </div>
-            ) 
-        }
-    }
-    
-    function setVideo(post) {
-        const videoUrl = post.media?.reddit_video.fallback_url.split('?')[0];
-        if(videoUrl) {
-            return (
-                <div className="container">
-                    <video src={videoUrl} controls={true} type='video/mp4' />
-                </div>
-            ) 
-        }
-    }
-    
-    function setText(post) {
-        const text = post.selftext || post.body;
-        if(text) {
-            const newText = addSpaceAfterHash(text);
-            return <ReactMarkdown children={newText} remarkPlugins={[remarkGfm]} />
-        }
-    }
-    
-    function setGallery(post) {
-        if(post.is_gallery) {
-            const keys = Object.keys(post.media_metadata);
-            return <Gallery keys={keys} images={post.media_metadata} />
-        }
+export function PostBody({ post, isListingCard }) {
+    const navigate = useNavigate();
+    console.log(post);
+
+    function handleClick() {
+        navigate(`/subreddits/${post.subreddit}/${post.id}`)
     }
 
     return(
-        <div className={`post-body`}>
-            <h2>{post.title}</h2>
+        <div className={isListingCard ? 'post-body listing-card': 'post-body'}>
+            <div className="body-header">
+                <h2>{post.title}</h2>
+                <ExternalLink post={post} />
+            </div>
             <div className="content">
-                {setImage(post)}
-                {setVideo(post)}
-                {setGallery(post)}
-                {setText(post)}     
+                <PreviewGradient isListingCard={isListingCard} handleClick={handleClick} />
+                <Image post={post} />
+                <Video post={post} />
+                <GalleryWrapper post={post} />
+                <Text post={post} />  
             </div>
         </div>
     );

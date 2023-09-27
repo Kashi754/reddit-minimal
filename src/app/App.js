@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Root } from '../Components/root/Root';
+import { Root } from '../Pages/root/Root';
 import { Home } from '../Pages/home/Home';
 import { Subreddits } from '../Pages/subreddits/Subreddits';
 import { Subreddit } from '../Pages/subreddit/Subreddit';

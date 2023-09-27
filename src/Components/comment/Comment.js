@@ -1,8 +1,12 @@
-import ReactMarkdown from "react-markdown";
-import remarkGfm from 'remark-gfm';
 import { useState } from "react";
 import './Comment.css';
-import { addSpaceAfterHash } from "../../utilities/addSpaceAfterHash";
+import { Link } from "react-router-dom";
+
+function htmlDecode(content) {
+    let e = document.createElement('div');
+    e.innerHTML = content;
+    return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+}
 
 export function Comment({ comment }) {
     const [expanded, setExpanded] = useState(false);
@@ -36,14 +40,21 @@ export function Comment({ comment }) {
     function handleClick() {
         setExpanded(prev => !prev)
     }
+    
+    function setCommentBody(comment) {
 
-    const body = addSpaceAfterHash(comment.body);
+        const text = comment.body_html || null;
+        if(text) {
+            return <div className='body-text' dangerouslySetInnerHTML={{__html: htmlDecode(comment.body_html)}} />;
+        }
+        return;
+    }
 
     return (
         <div className="comment">
-            <h3>{comment.author} </h3>
+            <h3><Link to={`/users/${comment.author}`}>{`u/${comment.author}`}</Link></h3>
             <div className="body">
-                <ReactMarkdown children={body} remarkPlugins={[remarkGfm]} />
+                {setCommentBody(comment)}
             </div>
             <div className='replies'>
                 {!expanded && comment.replies?.data?.children.length > 1 && <h4 className='toggle-replies' onClick={handleClick}>+ show replies</h4>}
