@@ -10,7 +10,6 @@ import './PostBody.css';
 
 export function PostBody({ post, isListingCard }) {
     const navigate = useNavigate();
-    console.log(post);
 
     function handleClick() {
         navigate(`/subreddits/${post.subreddit}/${post.id}`)

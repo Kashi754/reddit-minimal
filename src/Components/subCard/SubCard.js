@@ -8,7 +8,7 @@ export function SubCard({ subreddit }) {
     return (
         <div className='sub-card'>
             <div className="img-container">
-                <img className='user-icon' src={imageUrl} />
+                <img className='user-icon' src={imageUrl} alt={imageUrl}/>
             </div>
             <div className='card-header'>
                 <h3 className='main'>

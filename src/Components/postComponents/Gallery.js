@@ -3,8 +3,6 @@ import { useState } from "react";
 export function Gallery({ keys, images }) {
     const imageUrls = keys.map(key => images[key].s.u.split('?')[0].replace('preview', 'i'));
     const [currentUrl, setCurrentUrl] = useState([0, imageUrls[0]]);
-    console.log(imageUrls);
-    console.log(currentUrl);
     
     return (
         <div className="gallery">

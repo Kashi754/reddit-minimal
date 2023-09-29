@@ -5,7 +5,11 @@ export function ExternalLink({post}) {
     if(!post.url) {
         return;
     }
-    if(!post.url.includes('redd')) {
+    if(post.url.includes('r/')) {
+
+    }
+    if(!post.url.includes('redd') && !post.url.includes('imgur') && !post.url.includes('r/')) {
+
         const linkText = post.url.split('/').slice(2, -1).join('/');
         return (
             

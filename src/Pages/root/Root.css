@@ -1,0 +1,10 @@
+.header {
+    position: fixed;
+    z-index: 5;
+}
+
+.body {
+    position: relative;
+    top: 4rem;
+    display: flex;
+}

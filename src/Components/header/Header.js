@@ -1,30 +1,40 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import './Header.css';
 import SearchBar from "../SearchBar/SearchBar";
 
 export function Header() {
-    const url = window.location.href.split('/')[3];
+    const location = useLocation();
+    const pathArray = location.pathname.split('/');
+    const subPath = pathArray[2]? `/${pathArray[2]}` : '';
+    const path = pathArray[1] + subPath.slice(0, 11);
     const [search, setSearch] = useState();
-    const navigate = useNavigate();
+    const [show, setShow] = useState(false);
 
-    function handleSearch(event) {
-        setSearch(event.target.value);
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            setShow(false);
+        }
     }
 
-    function handleOption(event) {
-        navigate(`/${event.target.value}`);
+    function handleSearch(event) {
+        return;
+    }
+
+    function toggleDropdown() {
+        setShow(prev => !prev);
     }
 
     return (
         <header className='header'>
             <nav className='nav'>
-                <select className='nav' value={url} onChange={handleOption}>
-                    <option value=''>Home</option>
-                    <option value='subreddits'>Subreddits</option>
-                    <option value='users'>Users</option>
-                </select>
+                <button onClick={toggleDropdown} className='dropbtn'>{path || 'Home'}</button>
+                <div id="myDropdown" className={`dropdown-content  ${show && 'show'}`}>
+                    <Link className="link" to={''}>Home</Link>
+                    <Link className="link" to={'subreddits'}>Subreddits</Link>
+                    <Link className="link" to={'users'}>Users</Link>
+                </div>
             </nav>
             <div className="banner">
                 <div className="logo-container">

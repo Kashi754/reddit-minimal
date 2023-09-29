@@ -2,8 +2,14 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const loadSubredditsFeed = createAsyncThunk(
     'subreddits/loadSubredditsFeed',
-    async(before, after) => {
-        const response = await fetch(`https://www.reddit.com/subreddits.json?count=25&before=${before}&after=${after}`);
+    async(params) => {
+        let url;
+        if(params) {
+            url = 'https://www.reddit.com/subreddits.json?' + params;
+        } else {
+            url = 'https://www.reddit.com/subreddits.json';
+        }
+        const response = await fetch(url);
         const data = await response.json();
         return data;
     }
@@ -17,8 +23,15 @@ const subredditsSlice = createSlice({
         isError: false,
         nextPage: null,
         prevPage: null,
+        count: 0
     },
     reducers: {
+        incrementCount(state) {
+            state.count += 25
+        },
+        decrementCount(state) {
+            state.count -= 25
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -27,11 +40,12 @@ const subredditsSlice = createSlice({
             state.isError = false;
         })
         .addCase(loadSubredditsFeed.fulfilled, (state, action) => {
+            const data = action.payload;
             state.isLoading = false;
             state.isError = false;
-            state.subredditsFeed = action.payload.data.children.map(child => child.data);
-            state.nextPage = action.payload.data.after;
-            state.prevPage = action.payload.data.before;
+            state.subredditsFeed = data.data.children.map(child => child.data);
+            state.nextPage = data.data.after;
+            state.prevPage = data.data.before;
         })
         .addCase(loadSubredditsFeed.rejected, (state, action) => {
             state.isLoading = false;
@@ -43,4 +57,6 @@ const subredditsSlice = createSlice({
 export const selectNextPage = (state) => state.subreddits.nextPage;
 export const selectPrevPage = (state) => state.subreddits.prevPage;
 export const selectSubredditsFeed = (state) => state.subreddits.subredditsFeed;
+export const selectCount = (state) => state.subreddits.count;
+export const { incrementCount, decrementCount } = subredditsSlice.actions;
 export default subredditsSlice.reducer;

@@ -1,12 +1,14 @@
 .header {
     display: flex;
     height: 4rem;
+    width: 100vw;
     background-color: #313131;
     border-bottom: 1px solid #666;
     justify-content: space-between;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.5rem;
     box-sizing: border-box;
     margin-bottom: 3rem;
+    scrollbar-gutter: stable;
 }
 
 .nav {
@@ -14,13 +16,36 @@
     width: clamp(6rem, 20rem, 30rem);
     box-sizing: border-box;
     cursor: pointer;
+    display: inline-block;
+    border: 1px solid #666;
+    border-radius: 10px;
 }
 
 select::-ms-expand {
     display: none;
 }
 
-.nav:after {
+.dropbtn {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    background-color: #313131;
+    border: 1px solid #666;
+    border-radius: 10px;
+    color: white;
+    font-size: clamp(1rem, 1.25vw, 1.5rem);
+    border: none;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 0.5rem;
+    justify-content: space-between;
+    text-transform: capitalize;
+}
+
+.dropbtn:after {
     content: '>';
     font: 2.5rem 'Consolas', monospace;
     font-weight: bold;
@@ -28,31 +53,34 @@ select::-ms-expand {
     -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
     transform: rotate(90deg);
-    right: 10px;
-    top: 2px;
-    position: absolute;
     pointer-events: none;
 }
 
-select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+.dropbtn:hover, .dropbtn:focus {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) inset;
+}
 
-    width: clamp(6rem, 20rem, 30rem);
-    height: 3rem;
+.dropdown-content {
+    display: none;
+    position: absolute;
     background-color: #313131;
     border: 1px solid #666;
     border-radius: 10px;
-    font-size: 1rem;
-    color: white;
-    box-sizing: border-box;
-    padding-left: 1rem;
+    width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
 }
 
-select:hover {
-    box-shadow: 0 0 10px black inset;
+.dropdown-content .link {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
 }
+
+.dropdown-content .link:hover {background-color: #666;}
+
+.show {display:block;}
 
 .banner {
     height: 100%;

@@ -2,8 +2,14 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const loadUsersFeed = createAsyncThunk(
     'users/loadUsersFeed',
-    async(before, after) => {
-        const response = await fetch(`https://www.reddit.com/users.json?count=25&before=${before}&after=${after}`);
+    async(params) => {
+        let url;
+        if(params) {
+            url = 'https://www.reddit.com/users.json?' + params;
+        } else {
+            url = 'https://www.reddit.com/users.json';
+        }
+        const response = await fetch(url);
         const data = await response.json();
         return data;
     }
@@ -17,8 +23,15 @@ const usersSlice = createSlice({
         isError: false,
         nextPage: null,
         prevPage: null,
+        count: 0
     },
     reducers: {
+        incrementCount(state) {
+            state.count += 25
+        },
+        decrementCount(state) {
+            state.count -= 25
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -27,11 +40,12 @@ const usersSlice = createSlice({
             state.isError = false;
         })
         .addCase(loadUsersFeed.fulfilled, (state, action) => {
+            const data = action.payload;
             state.isLoading = false;
             state.isError = false;
-            state.usersFeed = action.payload.data.children.map(child => child.data);
-            state.nextPage = action.payload.data.after;
-            state.prevPage = action.payload.data.before;
+            state.usersFeed = data.data.children.map(child => child.data);
+            state.nextPage = data.data.after;
+            state.prevPage = data.data.before;
         })
         .addCase(loadUsersFeed.rejected, (state, action) => {
             state.isLoading = false;
@@ -43,4 +57,6 @@ const usersSlice = createSlice({
 export const selectNextPage = (state) => state.users.nextPage;
 export const selectPrevPage = (state) => state.users.prevPage;
 export const selectUsersFeed = (state) => state.users.usersFeed;
+export const selectCount = (state) => state.users.count;
+export const { incrementCount, decrementCount } = usersSlice.actions;
 export default usersSlice.reducer;
