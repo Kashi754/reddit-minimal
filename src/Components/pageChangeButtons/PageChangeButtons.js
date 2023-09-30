@@ -23,7 +23,13 @@ export function PageChangeButtons({ setSearchParams, count, increment, decrement
             {!!before && <button 
                 onClick={() => {
                     dispatch(decrement());
-                    setSearchParams(prevParams);
+                    setSearchParams((searchParams) => {
+                        const params = Object.fromEntries(searchParams);
+                        params.before = prevPage.before;
+                        params.count = prevPage.count;
+                        delete params.after;
+                        return params;
+                    });
                 }}
             >
                 &lt; PREV
@@ -31,7 +37,13 @@ export function PageChangeButtons({ setSearchParams, count, increment, decrement
             {!!after && <button 
                 onClick={() => {
                     dispatch(increment());
-                    setSearchParams(nextParams);
+                    setSearchParams((searchParams) => {
+                        const params = Object.fromEntries(searchParams);
+                        params.after = nextPage.after;
+                        params.count = nextPage.count;
+                        delete params.before;
+                        return params;
+                    });
                 }}
             >
                 NEXT &gt;

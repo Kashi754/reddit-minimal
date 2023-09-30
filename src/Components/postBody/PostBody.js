@@ -18,7 +18,7 @@ export function PostBody({ post, isListingCard }) {
     return(
         <div className={isListingCard ? 'post-body listing-card': 'post-body'}>
             <div className="body-header">
-                <h2>{post.title}</h2>
+                <h2>{post.title || post.name}</h2>
                 <ExternalLink post={post} />
             </div>
             <div className="content">

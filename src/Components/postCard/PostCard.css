@@ -1,5 +1,5 @@
 .post-card {
-    width: 75vw;
+    width: clamp(60vw, 50rem , 95vw);
     display: grid;
     grid-template:  'score header' 2.5rem
                     'score body'   auto

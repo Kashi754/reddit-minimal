@@ -5,6 +5,7 @@ import subredditSliceReducer from '../Pages/subreddit/subredditSlice';
 import userSliceReducer from '../Pages/user/userSlice';
 import usersSliceReducer from '../Pages/users/usersSlice';
 import postSliceReducer from '../Pages/post/postSlice';
+import searchPageSlice from '../Pages/searchPage/searchPageSlice';
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
     subreddit: subredditSliceReducer,
     users: usersSliceReducer,
     user: userSliceReducer,
-    post: postSliceReducer
+    post: postSliceReducer,
+    search: searchPageSlice
   },
 });

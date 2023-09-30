@@ -53,7 +53,7 @@ export function Comment({ comment }) {
     return (
         <div className="comment">
             <h3><Link to={`/users/${comment.author}`}>{`u/${comment.author}`}</Link></h3>
-            <div className="body">
+            <div className="comment-body">
                 {setCommentBody(comment)}
             </div>
             <div className='replies'>

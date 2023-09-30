@@ -9,6 +9,14 @@ export function ExternalLink({post}) {
 
     }
     if(!post.url.includes('redd') && !post.url.includes('imgur') && !post.url.includes('r/')) {
+        const url = post.url;
+        function isImgUrl(url) {
+            return /\.(jpg|jpeg|png|webp|avif|gif)$/.test(url)
+        }
+
+        if (isImgUrl(url)) {
+            return;
+        }
 
         const linkText = post.url.split('/').slice(2, -1).join('/');
         return (

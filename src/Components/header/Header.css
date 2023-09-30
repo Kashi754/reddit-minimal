@@ -3,6 +3,7 @@
     height: 4rem;
     width: 100vw;
     background-color: #313131;
+    opacity: 50%;
     border-bottom: 1px solid #666;
     justify-content: space-between;
     padding: 0.5rem 1.5rem;

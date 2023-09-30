@@ -1,15 +1,17 @@
-import { useRef, useState } from "react"
-import React from "react";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import './Header.css';
+import React, { useState } from "react";
+import { Link, createSearchParams, useLocation, useNavigate } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
+import './Header.css';
+import { determineParams } from "../../utilities/determineParams";
+import { determinePath } from "../../utilities/determinePath";
 
 export function Header() {
     const location = useLocation();
+    const navigate = useNavigate();
     const pathArray = location.pathname.split('/');
     const subPath = pathArray[2]? `/${pathArray[2]}` : '';
     const path = pathArray[1] + subPath.slice(0, 11);
-    const [search, setSearch] = useState();
+    const [search, setSearch] = useState('');
     const [show, setShow] = useState(false);
 
     window.onclick = function(event) {
@@ -18,8 +20,15 @@ export function Header() {
         }
     }
 
-    function handleSearch(event) {
-        return;
+    function handleSearch(event, searchQuery) {
+        event.preventDefault();
+        const params = determineParams(pathArray, searchQuery);
+        const route = determinePath(location, params);
+        console.log(route);
+        navigate({
+            pathname: route,
+            search: `?${createSearchParams(params)}`
+        });
     }
 
     function toggleDropdown() {

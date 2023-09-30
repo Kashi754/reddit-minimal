@@ -1,11 +1,17 @@
 export function Image({post}) {
-    if(post.url?.includes('imgur')) {
+    const url = post.url;
+    function isImgUrl(url) {
+        return /\.(jpg|jpeg|png|webp|avif|gif)$/.test(url)
+      }
+
+    if (isImgUrl(url)) {
         return (
             <div className="container">
                 <img src={post.url} alt={post.url}/>
             </div>
         ) 
     }
+
     const image = post.preview?.images?.[0];
     if(image && image.source.url.split('/')[2].split('.')[0] === 'external-preview') {
         return;
