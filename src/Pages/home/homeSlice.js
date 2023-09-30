@@ -58,5 +58,6 @@ export const selectNextPage = (state) => state.home.nextPage;
 export const selectPrevPage = (state) => state.home.prevPage;
 export const selectHomeFeed = (state) => state.home.homeFeed;
 export const selectCount = (state) => state.home.count;
+export const selectIsLoading = (state) => state.home.isLoading;
 export const { incrementCount, decrementCount } = homeSlice.actions;
 export default homeSlice.reducer;

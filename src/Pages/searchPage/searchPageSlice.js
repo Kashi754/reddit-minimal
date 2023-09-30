@@ -57,5 +57,6 @@ export const selectNextPage = (state) => state.search.nextPage;
 export const selectPrevPage = (state) => state.search.prevPage;
 export const selectSearchFeed = (state) => state.search.searchFeed;
 export const selectCount = (state) => state.search.count;
+export const selectIsLoading = (state) => state.search.isLoading;
 export const { incrementCount, decrementCount } = searchPageSlice.actions;
 export default searchPageSlice.reducer;

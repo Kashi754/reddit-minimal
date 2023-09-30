@@ -59,5 +59,6 @@ export const selectNextPage = (state) => state.subreddit.nextPage;
 export const selectPrevPage = (state) => state.subreddit.prevPage;
 export const selectSubredditFeed = (state) => state.subreddit.subredditFeed;
 export const selectCount = (state) => state.subreddit.count;
+export const selectIsLoading = (state) => state.subreddit.isLoading;
 export const { incrementCount, decrementCount } = subredditSlice.actions;
 export default subredditSlice.reducer;

@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useSearchParams } from "react-router-dom";
 import { Listing } from "../../Components/listing/Listing.js";
 import { PageChangeButtons } from "../../Components/pageChangeButtons/PageChangeButtons.js";
-import { decrementCount, incrementCount, loadUserFeed, selectCount, selectNextPage, selectPrevPage, selectUserFeed } from "./userSlice.js";
+import { decrementCount, incrementCount, loadUserFeed, selectCount, selectIsLoading, selectNextPage, selectPrevPage, selectUserFeed } from "./userSlice.js";
+import { DotPulse } from "@uiball/loaders";
 
 export function User() {
     const { user } = useParams();
@@ -11,6 +12,7 @@ export function User() {
     const nextPage = useSelector(selectNextPage);
     const prevPage = useSelector(selectPrevPage);
     const count = useSelector(selectCount);
+    const isLoading = useSelector(selectIsLoading);
     const dispatch = useDispatch();
     const [searchParams, setSearchParams] = useSearchParams();
 
@@ -25,6 +27,18 @@ export function User() {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [feed]);
+
+    if(isLoading) {
+        return (
+            <div className="loader">
+                <DotPulse
+                    size={300}
+                    speed={1}
+                    color='#ffffff'
+                />
+            </div>
+        )
+    }
 
     return (
         

@@ -43,4 +43,5 @@ const postSlice = createSlice({
 
 export const selectPost = (state) => state.post.postData;
 export const selectComments = (state) => state.post.comments;
+export const selectIsLoading = (state) => state.post.isLoading;
 export default postSlice.reducer;

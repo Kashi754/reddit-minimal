@@ -3,13 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { PageChangeButtons } from "../../Components/pageChangeButtons/PageChangeButtons.js";
 import { SubredditListing } from "../../Components/subredditListing/SubredditListing.js";
-import { decrementCount, incrementCount, loadSubredditsFeed, selectCount, selectNextPage, selectPrevPage, selectSubredditsFeed } from "./subredditsSlice.js";
+import { decrementCount, incrementCount, loadSubredditsFeed, selectCount, selectIsLoading, selectNextPage, selectPrevPage, selectSubredditsFeed } from "./subredditsSlice.js";
+import { DotPulse } from "@uiball/loaders";
 
 export function Subreddits() {
     const feed = useSelector(selectSubredditsFeed);
     const nextPage = useSelector(selectNextPage);
     const prevPage = useSelector(selectPrevPage);
     const count = useSelector(selectCount);
+    const isLoading = useSelector(selectIsLoading);
     const dispatch = useDispatch();
     const [searchParams, setSearchParams] = useSearchParams();
 
@@ -24,6 +26,18 @@ export function Subreddits() {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [feed]);
+
+    if(isLoading) {
+        return (
+            <div className="loader">
+                <DotPulse
+                    size={300}
+                    speed={1}
+                    color='#ffffff'
+                />
+            </div>
+        )
+    }
 
     return (
         <>

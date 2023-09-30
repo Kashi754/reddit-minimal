@@ -59,5 +59,6 @@ export const selectNextPage = (state) => state.user.nextPage;
 export const selectPrevPage = (state) => state.user.prevPage;
 export const selectUserFeed = (state) => state.user.userFeed;
 export const selectCount = (state) => state.user.count;
+export const selectIsLoading = (state) => state.user.isLoading;
 export const { incrementCount, decrementCount } = userSlice.actions;
 export default userSlice.reducer;

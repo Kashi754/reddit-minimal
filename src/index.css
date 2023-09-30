@@ -7,3 +7,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #1b1b1b;
 }
+
+.loader {
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, calc(-50% - 5rem));
+}
