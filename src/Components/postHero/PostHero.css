@@ -1,5 +1,5 @@
 .post-hero {
-    width: 75vw;
+    width: 75%;
     display: grid;
     grid-template:  'score header' 2.5rem
                     'score body'   auto
@@ -12,7 +12,7 @@
     align-content: center;
 }
 
-.post-score {
+.post-hero .post-score {
     grid-area: score;
     justify-self: center;
     align-self: start;
@@ -31,40 +31,71 @@
     box-sizing: border-box;
 }
 
-.arrow {
+.post-hero .arrow {
     width: 2.5rem;
 }
 
-.card-header {
+.post-hero .card-header {
     grid-area: header;
     font-size: 0.75rem;
     display: grid;
     grid-template-columns: 1fr fit-content;
     padding: 0.5rem 0.75rem;
     font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.card-header .main {
+.post-hero .card-header .main {
     grid-column: 1;
     justify-self: start;
 }
 
-.card-header a {
+.post-hero .card-header a {
     color: white;
     text-decoration: underline;
+    line-height: 1.5;
 }
 
-.card-header a:hover {
+.post-hero .card-header a:hover {
     text-decoration: none;
     color: grey;
 }
 
-.card-header .time {
+.post-hero .card-header .time {
     grid-column: 2;
     justify-self: end;
 }
 
-.card-footer {
+.post-hero .card-footer {
     grid-area: footer;
     padding: 0.5rem 0.75rem;
+}
+
+@media only screen and (max-width: 700px) {
+    .post-hero {
+        grid-template:  'header' auto
+                        'body'   auto
+                        'footer' auto;
+        grid-template-rows: 1rem auto auto;
+        grid-row-gap: 0.5rem;
+    }
+
+    .post-hero .post-score {
+        display: none;
+    }
+
+    .post-hero .card-header {
+        font-size: 0.75rem;
+    }
+
+    .post-hero .card-footer {
+        font-size: 0.75rem;
+    }
+}
+
+@media only screen and (max-width: 400px){
+    .post-hero {
+        width: 90%;
+    }
 }

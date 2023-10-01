@@ -4,15 +4,15 @@
 .form {
     box-sizing: border-box;
     display: flex;
-    width: 25vw;
-    height: 3rem;
-    min-width: 250px;
     align-items: center;
     border: 1px solid #666;
-    width: clamp(6rem, 20rem, 30rem);
+    width: 95%;
+    max-width: 30rem;
     box-sizing: border-box;
     padding: .25rem;
-
+    flex-shrink: 1;
+    margin: 0.5rem auto;
+    background-color: #1b1b1b;
 }
 
 input:-webkit-autofill,
@@ -46,7 +46,7 @@ input[type="text"] {
 
 #search {
     width: 100%;
-    height: 3rem;
+    height: 2rem;
     font-size: 1.5rem;
     text-align: center;
     font-family: sans-serif;
@@ -64,8 +64,8 @@ input[type="text"] {
 .search-button {
     background-color: rgba(240, 240, 240, 0.377);
     box-sizing: border-box;
-    height: 2.5rem;
-    width: 2.5rem;
+    height: 2.25rem;
+    width: 2.25rem;
     border: none;
     border-radius: 50%;
     align-self: center;
@@ -76,6 +76,7 @@ input[type="text"] {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    cursor: pointer;
 }
 
 .search-button:hover {
@@ -86,4 +87,16 @@ input[type="text"] {
 .search-button:active {
     background-color: rgba(240, 240, 240, 0.342);
     box-shadow: 0 0 10px black inset;
+}
+
+@media only screen and (max-width: 900px) {
+    #search {
+        font-size: 1rem;
+    }
+
+    .search-button {
+        height: 2rem;
+        width: 2rem;
+        font-size: 1rem;
+    }
 }

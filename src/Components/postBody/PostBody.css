@@ -5,6 +5,9 @@
     display: flex;
     flex-direction: column;
     line-height: 1.5;
+    font-size: 1rem;
+    height: calc(fit-content + 1rem);
+    width: 100%;
 }
 
 .listing-card {
@@ -25,68 +28,76 @@
     cursor: pointer;
 }
 
-:is(.post-body, .listing-card) p {
-    line-height: 1.5rem;
-    padding: 0.5rem 2rem;
+.post-body p {
+    line-height: 1.5em;
+    padding: 0.5rem 2em;
+    word-break: break-all;
+    white-space: normal;
 }
 
-:is(.post-body, .listing-card) a {
+.post-body a {
     color: white;
     text-decoration: underline;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
-:is(.post-body, .listing-card) h1 {
+.post-body h1 {
     padding: 0 2rem;
     padding-bottom: 1rem;
-    font-size: 2rem;
+    font-size: 2em;
 }
 
-:is(.post-body, .listing-card) h2 {
+.post-body h2 {
     padding-bottom: 1rem;
-    font-size: 1.5rem;
+    font-size: 1.5em;
 }
 
-:is(.post-body, .listing-card) h3 {
+.post-body h3 {
     padding: 0 2rem;
     padding-bottom: 1rem;
-    font-size: 1.25rem;
+    font-size: 1.25em;
 }
 
-:is(.post-body, .listing-card) ul {
+.post-body ul {
     padding-left: 5rem;
 }
 
-:is(.post-body, .listing-card) pre {
+.post-body pre {
     padding: 0.5rem 2rem;
 }
 
-:is(.post-body, .listing-card) code {
+.post-body code {
     background-color: rgba(0, 0, 0, 0.25);
-    font-size: 1rem;
+    font-size: 1em;
     padding: 0.5rem;
     border: 1px solid #666;
 }
 
-:is(.post-body, .listing-card) table {
+.post-body table {
     margin: 0 auto;
     justify-self: center;
 }
 
-:is(.post-body, .listing-card) table {
+.post-body table {
     border: 2px solid #666;
     border-collapse: collapse;
 }
 
-:is(.post-body, .listing-card) :is(th, td) {
+.post-body :is(th, td) {
     border: 1px solid #666;
     padding: 0.5rem;
 }
-:is(.post-body, .listing-card) th {
+.post-body th {
     background-color: #282828;
 }
 
-:is(.post-body, .listing-card) td {
+.post-body td {
     background-color: #202020;
+}
+
+.body-text {
+    width: 100%;
 }
 
 .body-header {
@@ -148,11 +159,12 @@
 
 .link-text h3 {
     line-height: 0;
+    padding: 0;
 }
 
 .gallery {
     position: relative;
-    height: 90vh;
+    height: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -160,8 +172,9 @@
     align-self: center;
 }
 
-.gallery .arrow {
-    width: 6rem;
+.gallery .post-arrow {
+    width: 6vw;
+    min-width: 3rem;
     height: auto;
     position: absolute;
     top: 50%;
@@ -170,9 +183,10 @@
     box-sizing: border-box;
     padding: 0.5rem;
     border-radius: 50%;
+    margin: 0 1rem;
 }
 
-.arrow:hover {
+.post-arrow:hover {
     background-color: white;
 }
 
@@ -189,4 +203,68 @@
     max-height: 100%;
     width: auto;
     max-width: 100%;
+}
+
+@media only screen and (max-width: 900px) {
+    .body-header {
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 700px){
+    .post-body {
+        font-size: 0.75rem;
+    }
+
+    .body-header {
+        padding: 0.75rem;
+        gap: 1rem;
+    }
+
+    .body-header h2 {
+        padding-bottom: 0.25rem;
+        font-size: 1.25em;
+    }
+
+    .link-container {
+        padding: 0.75rem;
+    }
+
+    .link-text h3 {
+        font-size: 1rem;
+    }
+
+    .post-body p {
+        padding: 0.25rem 2em;
+    }
+    
+    .post-body h1 {
+        padding: 0 1.5rem;
+        padding-bottom: 0.75rem;
+    }
+    
+    .post-body h2 {
+        padding-bottom: 0.5rem;
+    }
+    
+    .post-body h3 {
+        padding: 0 1rem;
+        padding-bottom: 0.5rem;
+    }
+    
+    .post-body ul {
+        padding-left: 0.5rem;
+    }
+    
+    .post-body pre {
+        padding: 0.25rem 1rem;
+    }
+    
+    .post-body code {
+        padding: 0.25rem;
+    }
+    
+    .post-body :is(th, td) {
+        padding: 0.25rem;
+    }
 }

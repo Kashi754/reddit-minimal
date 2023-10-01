@@ -6,4 +6,6 @@
 .body {
     position: relative;
     top: 4rem;
+    width: 100%;
+    scrollbar-gutter: stable;
 }

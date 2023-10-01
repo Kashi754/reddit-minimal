@@ -9,17 +9,17 @@ export function UserCard({ user }) {
 
     return (
         <div className='user-card'>
-            <div className="img-container">
+            <div className="user-img-container">
                 <img className='user-icon' src={imageUrl} alt={name}/>
             </div>
             <div className='user-card-header card-header'>
-                <h3 className='main'>
+                <h3 className='user-main'>
                     <Link to={`/users/${name}`}>
                         u/{name}
                     </Link>
                 </h3>
             </div>
-            <PostBody className='body' post={user} />
+            <PostBody className='user-body' post={user} />
         </div>
     )
 }

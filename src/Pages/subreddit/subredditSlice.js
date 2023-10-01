@@ -32,6 +32,9 @@ const subredditSlice = createSlice({
         },
         decrementCount(state) {
             state.count -= 25
+        },
+        resetCount(state) {
+            state.count = 0;
         }
     },
     extraReducers: (builder) => {
@@ -60,5 +63,5 @@ export const selectPrevPage = (state) => state.subreddit.prevPage;
 export const selectSubredditFeed = (state) => state.subreddit.subredditFeed;
 export const selectCount = (state) => state.subreddit.count;
 export const selectIsLoading = (state) => state.subreddit.isLoading;
-export const { incrementCount, decrementCount } = subredditSlice.actions;
+export const { incrementCount, decrementCount, resetCount } = subredditSlice.actions;
 export default subredditSlice.reducer;

@@ -8,13 +8,13 @@ export function Gallery({ keys, images }) {
         <div className="gallery">
             {
                 currentUrl[0] < imageUrls.length - 1 && 
-                <img className='right arrow' onClick={() => setCurrentUrl(prev => [prev[0] + 1, imageUrls[prev[0] + 1]])} 
+                <img className='right post-arrow' onClick={() => setCurrentUrl(prev => [prev[0] + 1, imageUrls[prev[0] + 1]])} 
                 src='/images/circle-right-arrow.png' 
                 alt="" />
             }
             {
                 currentUrl[0] > 0 &&
-                <img className='left arrow' onClick={() => setCurrentUrl(prev => [prev[0] - 1, imageUrls[prev[0] - 1]])} 
+                <img className='left post-arrow' onClick={() => setCurrentUrl(prev => [prev[0] - 1, imageUrls[prev[0] - 1]])} 
                 src='/images/circle-left-arrow.png' 
                 alt="" />
             }

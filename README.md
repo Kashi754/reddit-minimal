@@ -35,6 +35,7 @@ A Third-Party Reddit Client using the Reddit JSON api.
 ## Wireframes
 
 ![image](./readme-assets/Home-wireframe.jpg)
+![image](./readme-assets/Home-wireframe-phone.jpg)
 
 [Back to top](#table-of-contents)
 

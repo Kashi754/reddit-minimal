@@ -1,7 +1,7 @@
 .user-card {
-    width: 75vw;
+    width: 75%;
     display: grid;
-    grid-template:  'icon header' 2.5rem
+    grid-template:  'header header' 2.5rem
                     'icon body'   auto / auto 1fr;
     box-sizing: border-box;
     background-color: #313131;
@@ -12,7 +12,7 @@
     grid-column-gap: 0.5rem;
 }
 
-.img-container {
+.user-img-container {
     width: 5rem;
     height: auto;
     padding: 1.5rem 0.75rem;
@@ -23,6 +23,7 @@
     width: 100%;
     height: auto;
     box-sizing: border-box;
+    align-self: center;
 }
 
 .user-card-header {
@@ -30,29 +31,47 @@
     font-size: 0.75rem;
     display: grid;
     grid-template-columns: 1fr fit-content;
-    padding: 0.5rem 0;
+    padding: 0.5rem 0.75rem;
     font-size: 1rem;
 }
 
-.card-header .main {
+.user-card-header .user-main {
     justify-self: start;
 }
 
-.card-header a {
+.user-card-header a {
     color: white;
     text-decoration: underline;
 }
 
-.card-header a:hover {
+.user-card-header a:hover {
     text-decoration: none;
     color: grey;
 }
 
-.card-footer {
-    grid-area: footer;
-    padding: 0.5rem 0.75rem;
+.user-body {
+    grid-area: body;
 }
 
-.body {
-    grid-area: body;
+@media only screen and (max-width: 400px){
+    .user-card {
+        grid-template:  'header' 2.5rem
+                        'icon'   auto 
+                        'body' auto;
+        justify-content: center;
+        justify-items: center;
+    }
+
+    .user-card-header {
+        padding: 0.5rem 0;
+    }
+
+    .user-card-header .user-main {
+        justify-self: center;
+    }
+
+    .user-img-container {
+        padding: 0;
+        grid-area: icon;
+    }
 }

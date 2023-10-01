@@ -1,5 +1,6 @@
 .post-card {
-    width: clamp(60vw, 50rem , 95vw);
+    width: 95%;
+    max-width: 900px;
     display: grid;
     grid-template:  'score header' 2.5rem
                     'score body'   auto
@@ -12,7 +13,7 @@
     align-content: center;
 }
 
-.card-score {
+.post-card .card-score {
     grid-area: score;
     justify-self: center;
     align-self: center;
@@ -31,40 +32,54 @@
     box-sizing: border-box;
 }
 
-.arrow {
+.post-card .arrow {
     width: 2.5rem;
 }
 
-.card-header {
+.post-card .card-header {
     grid-area: header;
-    font-size: 0.75rem;
     display: grid;
     grid-template-columns: 1fr fit-content;
+    grid-column-gap: 0.75rem;
     padding: 0.5rem 0.75rem;
     font-size: 1rem;
 }
 
-.card-header .main {
+.post-card .card-header .main {
     grid-column: 1;
     justify-self: start;
 }
 
-.card-header a {
+.post-card .card-header a {
     color: white;
     text-decoration: underline;
 }
 
-.card-header a:hover {
+.post-card .card-header a:hover {
     text-decoration: none;
     color: grey;
 }
 
-.card-header .time {
+.post-card .card-header .time {
     grid-column: 2;
     justify-self: end;
 }
 
-.card-footer {
+.post-card .card-footer {
     grid-area: footer;
     padding: 0.5rem 0.75rem;
+}
+
+@media only screen and (max-width: 700px){
+    .post-card {
+        grid-template-columns: 2.75rem 1fr;
+    }
+
+    .post-card .arrow {
+        width: 2rem;
+    }
+
+    .post-card .card-header {
+        font-size: 0.75rem;
+    }
 }

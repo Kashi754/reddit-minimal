@@ -1,5 +1,4 @@
 import { useDispatch } from "react-redux";
-import { createSearchParams } from "react-router-dom";
 import './PageChangeButtons.css';
 
 export function PageChangeButtons({ setSearchParams, count, increment, decrement, before = null, after = null}) {
@@ -14,9 +13,6 @@ export function PageChangeButtons({ setSearchParams, count, increment, decrement
         before: before,
         count: count,
     } : null;
-
-    const prevParams = prevPage && createSearchParams(prevPage);
-    const nextParams = nextPage && createSearchParams(nextPage);
 
     return (
         <div className="button-container">

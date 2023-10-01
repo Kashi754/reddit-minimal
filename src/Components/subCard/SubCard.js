@@ -7,18 +7,18 @@ export function SubCard({ subreddit }) {
 
     return (
         <div className='sub-card'>
-            <div className="img-container">
+            <div className="sub-img-container">
                 <img className='user-icon' src={imageUrl} alt={imageUrl}/>
             </div>
-            <div className='card-header'>
-                <h3 className='main'>
-                    <Link to={`${subreddit.display_name}`}>
+            <div className='sub-card-header'>
+                <h3 className='sub-main'>
+                    <Link to={`/subreddits/${subreddit.display_name}`}>
                         {subreddit.display_name_prefixed}
                     </Link>
                 </h3>
             </div>
             <PostBody post={subreddit} />
-            <div className='card-footer'>
+            <div className='sub-card-footer'>
                 <h4>{subreddit.subscribers} subscribers</h4>
             </div>
         </div>

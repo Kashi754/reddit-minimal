@@ -31,6 +31,9 @@ const usersSlice = createSlice({
         },
         decrementCount(state) {
             state.count -= 25
+        },
+        resetCount(state) {
+            state.count = 0;
         }
     },
     extraReducers: (builder) => {
@@ -59,5 +62,5 @@ export const selectPrevPage = (state) => state.users.prevPage;
 export const selectUsersFeed = (state) => state.users.usersFeed;
 export const selectCount = (state) => state.users.count;
 export const selectIsLoading = (state) => state.users.isLoading;
-export const { incrementCount, decrementCount } = usersSlice.actions;
+export const { incrementCount, decrementCount, resetCount } = usersSlice.actions;
 export default usersSlice.reducer;

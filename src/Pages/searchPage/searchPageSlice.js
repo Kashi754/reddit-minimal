@@ -30,6 +30,9 @@ const searchPageSlice = createSlice({
         },
         decrementCount(state) {
             state.count -= 25
+        },
+        resetCount(state) {
+            state.count = 0;
         }
     },
     extraReducers: (builder) => {
@@ -58,5 +61,5 @@ export const selectPrevPage = (state) => state.search.prevPage;
 export const selectSearchFeed = (state) => state.search.searchFeed;
 export const selectCount = (state) => state.search.count;
 export const selectIsLoading = (state) => state.search.isLoading;
-export const { incrementCount, decrementCount } = searchPageSlice.actions;
+export const { incrementCount, decrementCount, resetCount } = searchPageSlice.actions;
 export default searchPageSlice.reducer;
