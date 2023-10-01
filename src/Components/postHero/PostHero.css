@@ -79,6 +79,7 @@
                         'footer' auto;
         grid-template-rows: 1rem auto auto;
         grid-row-gap: 0.5rem;
+        width: 90%;
     }
 
     .post-hero .post-score {
@@ -91,11 +92,5 @@
 
     .post-hero .card-footer {
         font-size: 0.75rem;
-    }
-}
-
-@media only screen and (max-width: 400px){
-    .post-hero {
-        width: 90%;
     }
 }
