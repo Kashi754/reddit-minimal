@@ -15,7 +15,7 @@ export function determinePath(location) {
         }
     }
     if(pathArray[1] === 'users' && pathArray[2] && pathArray[2] !== 'search') {
-        return '/search';
+        return `/${pathArray[1]}/search`;
     }
     //search for anything else
     if(pathArray.indexOf('search') === -1) {
