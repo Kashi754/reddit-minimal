@@ -19,7 +19,7 @@ describe("User Component", () => {
 
     it('should display an error message when the request fails', async () => {
         server.use(
-            rest.get('http://www.reddit.com/user/testUser1/submitted/.json', (req, res, ctx) => {
+            rest.get('https://www.reddit.com/user/testUser1/submitted/.json', (req, res, ctx) => {
                 return res.once(
                     ctx.status(500),
                     ctx.json({ message: 'Internal server error'})

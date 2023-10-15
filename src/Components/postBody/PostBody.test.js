@@ -92,12 +92,12 @@ describe('PostCard Body SubComponent', () => {
 
     it('should render a video', () => {
         const post = {
-            media: {reddit_video: {fallback_url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4'}}
+            media: {reddit_video: {fallback_url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4'}}
         }
         renderWithProviders(<PostBody post={post} isListingCard={false} />);
         const video = document.querySelector('video');
         expect(video).toBeInTheDocument();
-        expect(video.getAttribute('src')).toBe('http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4');
+        expect(video.getAttribute('src')).toBe('https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4');
         expect(video.getAttribute('type')).toBe('video/mp4');
     })
 

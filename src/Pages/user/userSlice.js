@@ -4,7 +4,7 @@ export const loadUserFeed = createAsyncThunk(
     'user/loadUserFeed',
     async(args) => {
         const {user, params} = args
-        const url = `http://www.reddit.com/user/${user}/submitted/.json?` + params;
+        const url = `https://www.reddit.com/user/${user}/submitted/.json?` + params;
         const response = await fetch(url);
         if(!response.ok) {
             const error = await response.json()
