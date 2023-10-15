@@ -130,7 +130,7 @@ export const handlers = [
     }),
 
     //User Page Request URL
-    rest.get('http://www.reddit.com/user/testUser1/submitted/.json', (req, res, ctx) => {
+    rest.get('https://www.reddit.com/user/testUser1/submitted/.json', (req, res, ctx) => {
         const params = req.url.searchParams;
         const after = params.get('after');
         const before = params.get('before');
