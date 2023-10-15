@@ -2,11 +2,11 @@ import { useLocation, useSearchParams } from "react-router-dom";
 import { Listing } from "../../Components/listing/Listing";
 import { PageChangeButtons } from "../../Components/pageChangeButtons/PageChangeButtons";
 import { SubredditListing } from "../../Components/subredditListing/SubredditListing";
-import { decrementCount, incrementCount, loadSearchFeed, selectCount, selectIsLoading, selectNextPage, selectPrevPage, selectSearchFeed } from "./searchPageSlice";
+import { decrementCount, incrementCount, loadSearchFeed, selectCount, selectError, selectIsError, selectIsLoading, selectNextPage, selectPrevPage, selectSearchFeed } from "./searchPageSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { UserListing } from "../../Components/userListing/UserListing";
-import { DotPulse } from "@uiball/loaders";
+/* import { DotPulse } from "@uiball/loaders"; */
 
 function ListingForSearch({ route, subreddit, feed }) {
     if(route === 'subreddits') {
@@ -26,6 +26,8 @@ export function SearchPage() {
     const prevPage = useSelector(selectPrevPage);
     const count = useSelector(selectCount);
     const isLoading = useSelector(selectIsLoading);
+    const isError = useSelector(selectIsError);
+    const error = useSelector(selectError);
     const dispatch = useDispatch();
     const location = useLocation();
     const pathArray = location.pathname.split('/');
@@ -45,11 +47,20 @@ export function SearchPage() {
     if(isLoading) {
         return (
             <div className="loader">
-                <DotPulse
+                ...Loading
+                {/* <DotPulse
                     size={300}
                     speed={1}
                     color='#ffffff'
-                />
+                /> */}
+            </div>
+        )
+    }
+
+    if(isError) {
+        return (
+            <div className="error">
+                <p role='alert'>{error}</p>
             </div>
         )
     }

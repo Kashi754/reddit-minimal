@@ -1,8 +1,8 @@
 export function Image({post}) {
     const url = post.url;
     function isImgUrl(url) {
-        return /\.(jpg|jpeg|png|webp|avif|gif)$/.test(url)
-      }
+        return /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png|svg|gif|webp|jpeg)/.test(url)
+    }
 
     if (isImgUrl(url)) {
         return (

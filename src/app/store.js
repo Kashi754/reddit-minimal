@@ -7,8 +7,7 @@ import usersSliceReducer from '../Pages/users/usersSlice';
 import postSliceReducer from '../Pages/post/postSlice';
 import searchPageSlice from '../Pages/searchPage/searchPageSlice';
 
-export const store = configureStore({
-  reducer: {
+const rootReducer = {
     home: homeSliceReducer,
     subreddits: subredditsSliceReducer,
     subreddit: subredditSliceReducer,
@@ -16,5 +15,13 @@ export const store = configureStore({
     user: userSliceReducer,
     post: postSliceReducer,
     search: searchPageSlice
-  },
-});
+};
+
+export const store = configureStore({reducer: rootReducer});
+
+export const setupStore = preloadedState => {
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState
+  })
+}

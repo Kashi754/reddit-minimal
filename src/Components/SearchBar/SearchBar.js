@@ -10,8 +10,8 @@ function SearchBar(props) {
     }
     
     return (
-        <form className='form' onSubmit={clickHandler} query={props.search}>
-            <button className='search-button' type='submit'><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
+        <form className='form' onSubmit={clickHandler}>
+            <button role='button' className='search-button' data-testid='search-button' type='submit'><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
             <input 
                 id='search'
                 name='search'

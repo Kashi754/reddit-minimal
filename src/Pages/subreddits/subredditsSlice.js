@@ -3,13 +3,13 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const loadSubredditsFeed = createAsyncThunk(
     'subreddits/loadSubredditsFeed',
     async(params) => {
-        let url;
-        if(params) {
-            url = 'https://www.reddit.com/subreddits.json?' + params;
-        } else {
-            url = 'https://www.reddit.com/subreddits.json';
-        }
+        const url = 'https://www.reddit.com/subreddits.json?' + params;
         const response = await fetch(url);
+        if(!response.ok) {
+            const error = await response.json()
+            const message = `An error has occured: ${response.status} ${error.message}`;
+            throw new Error(message);
+        }
         const data = await response.json();
         return data;
     }
@@ -23,7 +23,8 @@ const subredditsSlice = createSlice({
         isError: false,
         nextPage: null,
         prevPage: null,
-        count: 0
+        count: 0,
+        error: null
     },
     reducers: {
         incrementCount(state) {
@@ -50,6 +51,7 @@ const subredditsSlice = createSlice({
         .addCase(loadSubredditsFeed.rejected, (state, action) => {
             state.isLoading = false;
             state.isError = true;
+            state.error = action.error.message;
         })
     }
 });
@@ -59,5 +61,7 @@ export const selectPrevPage = (state) => state.subreddits.prevPage;
 export const selectSubredditsFeed = (state) => state.subreddits.subredditsFeed;
 export const selectCount = (state) => state.subreddits.count;
 export const selectIsLoading = (state) => state.subreddits.isLoading;
+export const selectIsError = (state) => state.subreddits.isError;
+export const selectError = (state) => state.subreddits.error;
 export const { incrementCount, decrementCount, resetCount } = subredditsSlice.actions;
 export default subredditsSlice.reducer;

@@ -19,11 +19,10 @@ export function ExternalLink({post}) {
         }
 
         const linkText = post.url.split('/').slice(2, -1).join('/');
-        console.log(post);
         return (
             
-            <a href={post.url} className="link-container">
-                {!!post.thumbnail && !post.thumbnail === 'default' && <img className="link-image" src={post.thumbnail} style={{width: post.thumbnail_width + 'px', height: post.thumbnail_height + 'px'}} alt={post.thumbnail}/>}
+            <a href={post.url} className="link-container" target='_blank' rel='noopener noreferrer'>
+                {!!post.thumbnail && post.thumbnail !== 'default' && <img className="link-image" src={post.thumbnail} width={post.thumbnail_width} height={post.thumbnail_height} alt='thumbnail'/>}
                 <div className="link-text">
                     <h3>{`${linkText.match(/.{1,20}/g)?.[0] || 'link not found'}... `}</h3> 
                     <FontAwesomeIcon icon={faLink} />

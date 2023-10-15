@@ -17,7 +17,7 @@ function displayTime(post) {
         return `${hours} ${hours > 1 ? 'hours' : 'hour'} ago`
     }
     if(minutes) {
-        return `${minutes} ${minutes > 1 ? 'minute' : 'minute'}`
+        return `${minutes} ${minutes > 1 ? 'minutes' : 'minute'} ago`
     }
 }
 

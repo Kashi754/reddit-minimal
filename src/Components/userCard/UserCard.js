@@ -3,7 +3,6 @@ import './UserCard.css';
 import { PostBody } from '../postBody/PostBody';
 
 export function UserCard({ user }) {
-    console.log(user);
     const imageUrl = user.icon_img?.split('?')[0];
     const name = user.display_name_prefixed?.split('/')[1] || user.name
 

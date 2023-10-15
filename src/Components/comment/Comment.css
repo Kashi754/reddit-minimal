@@ -126,6 +126,9 @@
 
 .toggle-replies {
     color: grey;
+    background: none;
+    border: none;
+    width: fit-content;
     cursor: pointer;
 }
 

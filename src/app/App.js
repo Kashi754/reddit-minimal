@@ -8,15 +8,16 @@ import { Users } from '../Pages/users/Users';
 import { User } from '../Pages/user/User';
 import { SearchPage } from '../Pages/searchPage/SearchPage';
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
+import { NotFound } from '../Pages/notFound/NotFound';
 
 function App() {
 
   document.documentElement.style.setProperty(
     '--scrollbar-width', (
       window.innerWidth - document.documentElement.clientWidth + 20
-    ) + "px");
+  ) + "px");
 
-  const appRouter = createBrowserRouter(createRoutesFromElements(
+  const routes = createRoutesFromElements(
     <Route path='/' element={<Root />}>
       <Route index element={<Home />} />
       <Route path='search' element={<SearchPage />} />
@@ -28,12 +29,11 @@ function App() {
       <Route path='users' element={<Users />} />
       <Route path='users/search' element={<SearchPage />} />
       <Route path='users/:user' element={<User />} />
+      <Route path='*' element={<NotFound />} />
     </Route>
-  ));
-
-  return (
-    <RouterProvider router={appRouter} />
   );
+
+  return routes;
 }
 
 export default App;

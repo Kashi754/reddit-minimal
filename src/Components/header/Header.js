@@ -18,10 +18,11 @@ export function Header() {
     const [show, setShow] = useState(false);
 
     window.onclick = function(event) {
-        if (!event.target.parentNode.matches('.nav-button')) {
+        if (!event.target.parentNode?.matches('.nav-button')) {
             if(event.target.matches('#search')) {
                 return;
             }
+
             setShow(false);
         }
     }
@@ -30,8 +31,7 @@ export function Header() {
         event.preventDefault();
         dispatch(resetCount());
         const params = determineParams(pathArray, searchQuery);
-        const route = determinePath(location, params);
-        console.log(route);
+        const route = determinePath(location);
         navigate({
             pathname: route,
             search: `?${createSearchParams(params)}`
@@ -39,18 +39,18 @@ export function Header() {
         setSearch('');
     }
 
-    function toggleDropdown() {
-        setShow(!show);
+    function handleClick() {
+        setShow(prev => !prev);
     }
 
     return (
         <header className='header'>
             <nav className='nav'>
-                <button onClick={toggleDropdown} className="nav-button">
+                <button role='button' type='button' onClick={handleClick} className="nav-button">
                     <h2 className='dropbtn'>{path || 'Home'}</h2>
                     <h2 className='drop-arrow'>&gt;</h2>        
                 </button>
-                <div id="myDropdown" className={`dropdown-content  ${show && 'show'}`}>
+                <div id="myDropdown" data-testid={show? 'show' : 'hide'} className={`dropdown-content ${show? 'show' : 'hide'}`}>
                     <SearchBar className='search-bar' search={search} setSearch={setSearch} handleSubmit={handleSearch} />
                     <Link className="link" to={''}>Home</Link>
                     <Link className="link" to={'subreddits'}>Subreddits</Link>

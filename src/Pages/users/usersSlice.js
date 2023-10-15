@@ -3,13 +3,14 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const loadUsersFeed = createAsyncThunk(
     'users/loadUsersFeed',
     async(params) => {
-        let url;
-        if(params) {
-            url = 'https://www.reddit.com/users.json?' + params;
-        } else {
-            url = 'https://www.reddit.com/users.json';
-        }
+        const url = 'https://www.reddit.com/users.json?' + params;
+        
         const response = await fetch(url);
+        if(!response.ok) {
+            const error = await response.json()
+            const message = `An error has occured: ${response.status} ${error.message}`;
+            throw new Error(message);
+        }
         const data = await response.json();
         return data;
     }
@@ -23,7 +24,8 @@ const usersSlice = createSlice({
         isError: false,
         nextPage: null,
         prevPage: null,
-        count: 0
+        count: 0,
+        error: null
     },
     reducers: {
         incrementCount(state) {
@@ -53,6 +55,7 @@ const usersSlice = createSlice({
         .addCase(loadUsersFeed.rejected, (state, action) => {
             state.isLoading = false;
             state.isError = true;
+            state.error = action.error.message;
         })
     }
 });
@@ -62,5 +65,7 @@ export const selectPrevPage = (state) => state.users.prevPage;
 export const selectUsersFeed = (state) => state.users.usersFeed;
 export const selectCount = (state) => state.users.count;
 export const selectIsLoading = (state) => state.users.isLoading;
+export const selectIsError = (state) => state.users.isError;
+export const selectError = (state) => state.users.error;
 export const { incrementCount, decrementCount, resetCount } = usersSlice.actions;
 export default usersSlice.reducer;

@@ -10,15 +10,15 @@ export function Gallery({ keys, images }) {
                 currentUrl[0] < imageUrls.length - 1 && 
                 <img className='right post-arrow' onClick={() => setCurrentUrl(prev => [prev[0] + 1, imageUrls[prev[0] + 1]])} 
                 src='/images/circle-right-arrow.png' 
-                alt="" />
+                alt="next" />
             }
             {
                 currentUrl[0] > 0 &&
                 <img className='left post-arrow' onClick={() => setCurrentUrl(prev => [prev[0] - 1, imageUrls[prev[0] - 1]])} 
                 src='/images/circle-left-arrow.png' 
-                alt="" />
+                alt="previous" />
             }
-            <img className="gallery-image" src={currentUrl[1]} alt={imageUrls[0]} />
+            <img className="gallery-image" src={currentUrl[1]} alt={currentUrl[1]} />
         </div>
     );
 }

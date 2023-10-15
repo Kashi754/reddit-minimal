@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { Listing } from "../../Components/listing/Listing.js";
 import { PageChangeButtons } from "../../Components/pageChangeButtons/PageChangeButtons.js";
-import { decrementCount, incrementCount, loadHomeFeed, selectCount, selectHomeFeed, selectIsLoading, selectNextPage, selectPrevPage } from "./homeSlice.js";
-import { DotPulse } from "@uiball/loaders";
+import { decrementCount, incrementCount, loadHomeFeed, selectCount, selectError, selectHomeFeed, selectIsError, selectIsLoading, selectNextPage, selectPrevPage } from "./homeSlice.js";
+/* import { DotPulse } from "@uiball/loaders"; */
 
 export function Home() {
     const feed = useSelector(selectHomeFeed);
@@ -12,6 +12,8 @@ export function Home() {
     const prevPage = useSelector(selectPrevPage);
     const count = useSelector(selectCount);
     const isLoading = useSelector(selectIsLoading);
+    const isError = useSelector(selectIsError);
+    const error = useSelector(selectError);
     const dispatch = useDispatch();
     const [searchParams, setSearchParams] = useSearchParams();
 
@@ -29,12 +31,21 @@ export function Home() {
 
     if(isLoading) {
         return (
-            <div className="loader">
-                <DotPulse 
+            <div data-testid='loader' className="loader">
+                ...Loading
+                {/* <DotPulse 
                     size={300}
                     speed={1}
                     color='#ffffff'
-                />
+                /> */}
+            </div>
+        )
+    }
+
+    if(isError) {
+        return (
+            <div className="error">
+                <p role='alert'>{error}</p>
             </div>
         )
     }

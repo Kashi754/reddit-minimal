@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { PageChangeButtons } from "../../Components/pageChangeButtons/PageChangeButtons.js";
 import { SubredditListing } from "../../Components/subredditListing/SubredditListing.js";
-import { decrementCount, incrementCount, loadSubredditsFeed, selectCount, selectIsLoading, selectNextPage, selectPrevPage, selectSubredditsFeed } from "./subredditsSlice.js";
-import { DotPulse } from "@uiball/loaders";
+import { decrementCount, incrementCount, loadSubredditsFeed, selectCount, selectError, selectIsError, selectIsLoading, selectNextPage, selectPrevPage, selectSubredditsFeed } from "./subredditsSlice.js";
+/* import { DotPulse } from "@uiball/loaders"; */
 
 export function Subreddits() {
     const feed = useSelector(selectSubredditsFeed);
@@ -12,6 +12,8 @@ export function Subreddits() {
     const prevPage = useSelector(selectPrevPage);
     const count = useSelector(selectCount);
     const isLoading = useSelector(selectIsLoading);
+    const isError = useSelector(selectIsError);
+    const error = useSelector(selectError);
     const dispatch = useDispatch();
     const [searchParams, setSearchParams] = useSearchParams();
 
@@ -30,11 +32,20 @@ export function Subreddits() {
     if(isLoading) {
         return (
             <div className="loader">
-                <DotPulse
+                ...Loading
+                {/* <DotPulse
                     size={300}
                     speed={1}
                     color='#ffffff'
-                />
+                /> */}
+            </div>
+        )
+    }
+
+    if(isError) {
+        return (
+            <div className="error">
+                <p role='alert'>{error}</p>
             </div>
         )
     }
