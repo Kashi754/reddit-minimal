@@ -5,7 +5,7 @@ import { CommentList } from "../../Components/commentList/CommentList";
 import { PostHero } from "../../Components/postHero/PostHero";
 import './Post.css';
 import { loadPost, selectComments, selectError, selectIsError, selectIsLoading, selectPost } from "./postSlice";
-/* import { DotPulse } from "@uiball/loaders"; */
+import { DotPulse } from "@uiball/loaders";
 
 export function Post() {
     const selectedPost = useSelector(selectPost);
@@ -23,12 +23,11 @@ export function Post() {
     if(isLoading) {
         return (
             <div className="loader">
-                ...Loading
-                {/* <DotPulse 
+                {<DotPulse 
                     size={300}
                     speed={1}
                     color='#ffffff'
-                /> */}
+                />}
             </div>
         )
     }

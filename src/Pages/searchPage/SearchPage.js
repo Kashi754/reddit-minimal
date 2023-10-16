@@ -6,7 +6,7 @@ import { decrementCount, incrementCount, loadSearchFeed, selectCount, selectErro
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { UserListing } from "../../Components/userListing/UserListing";
-/* import { DotPulse } from "@uiball/loaders"; */
+import { DotPulse } from "@uiball/loaders";
 
 function ListingForSearch({ route, subreddit, feed }) {
     if(route === 'subreddits') {
@@ -47,12 +47,11 @@ export function SearchPage() {
     if(isLoading) {
         return (
             <div className="loader">
-                ...Loading
-                {/* <DotPulse
+                {<DotPulse
                     size={300}
                     speed={1}
                     color='#ffffff'
-                /> */}
+                />}
             </div>
         )
     }

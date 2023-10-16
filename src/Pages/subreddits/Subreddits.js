@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import { PageChangeButtons } from "../../Components/pageChangeButtons/PageChangeButtons.js";
 import { SubredditListing } from "../../Components/subredditListing/SubredditListing.js";
 import { decrementCount, incrementCount, loadSubredditsFeed, selectCount, selectError, selectIsError, selectIsLoading, selectNextPage, selectPrevPage, selectSubredditsFeed } from "./subredditsSlice.js";
-/* import { DotPulse } from "@uiball/loaders"; */
+import { DotPulse } from "@uiball/loaders";
 
 export function Subreddits() {
     const feed = useSelector(selectSubredditsFeed);
@@ -32,12 +32,11 @@ export function Subreddits() {
     if(isLoading) {
         return (
             <div className="loader">
-                ...Loading
-                {/* <DotPulse
+                {<DotPulse
                     size={300}
                     speed={1}
                     color='#ffffff'
-                /> */}
+                />}
             </div>
         )
     }

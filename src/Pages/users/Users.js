@@ -7,7 +7,7 @@ import { selectNextPage } from "./usersSlice.js";
 import { useDispatch, useSelector } from "react-redux";
 import { PageChangeButtons } from "../../Components/pageChangeButtons/PageChangeButtons.js";
 import { useSearchParams } from "react-router-dom";
-/* import { DotPulse } from "@uiball/loaders"; */
+import { DotPulse } from "@uiball/loaders";
 
 export function Users() {
     const feed = useSelector(selectUsersFeed);
@@ -35,12 +35,11 @@ export function Users() {
     if(isLoading) {
         return (
             <div className="loader">
-                ...Loading
-                {/* <DotPulse
+                {<DotPulse
                     size={300}
                     speed={1}
                     color='#ffffff'
-                /> */}
+                />}
             </div>
         )
     }

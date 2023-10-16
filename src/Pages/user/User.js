@@ -4,7 +4,7 @@ import { useParams, useSearchParams } from "react-router-dom";
 import { Listing } from "../../Components/listing/Listing.js";
 import { PageChangeButtons } from "../../Components/pageChangeButtons/PageChangeButtons.js";
 import { decrementCount, incrementCount, loadUserFeed, selectCount, selectError, selectIsError, selectIsLoading, selectNextPage, selectPrevPage, selectUserFeed } from "./userSlice.js";
-/* import { DotPulse } from "@uiball/loaders"; */
+import { DotPulse } from "@uiball/loaders";
 
 export function User() {
     const { user } = useParams();
@@ -33,12 +33,11 @@ export function User() {
     if(isLoading) {
         return (
             <div className="loader">
-                ...Loading
-                {/* <DotPulse
+                {<DotPulse
                     size={300}
                     speed={1}
                     color='#ffffff'
-                /> */}
+                />}
             </div>
         )
     }
